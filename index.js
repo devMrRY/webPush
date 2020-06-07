@@ -10,11 +10,10 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "client")));
 
 // vapidKeys should be generated only once
-// const vapidKeys = webPush.generateVAPIDKeys();
+const vapidKeys = webPush.generateVAPIDKeys();
 
-const publicKey =
-  "BG8Xw280gOzWqBYxEx-_wI80XhMnkR_EsDXo5f59bVBElh_OtpuFxoqyUVfdlWLnJdXgnOtwRBsLT0MS2AYj3V0";
-const privateKey = "your private key";
+const publicKey = vapidKeys.publicKey
+const privateKey = vapidKeys.privateKey
 
 webPush.setVapidDetails("mailto:http//:localhost:3000", publicKey, privateKey);
 
